@@ -353,10 +353,15 @@ restartButton.addEventListener("click", () => {
 });
 // Modify the game over logic to display the restart button
 function handleGameOver() {
+ 
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0; // Reset the music to the beginning
+  
   gameOverScreen.style.display = "block"; // Show the Game Over screen
   finalScore.textContent = `Score: ${score}`;
   playGameOverSound() // Display the final score; // Play the game over sound
-  game.active = false; // Stop the game loop
+  game.active = false;
+   // Stop the game loop
   restartButton.style.display = "block"; // Show the restart button
 }
 
@@ -402,7 +407,7 @@ function resetGame() {
   // Hide Game Over screen
   gameOverScreen.style.display = "none";
   restartButton.style.display = "none";
-
+  backgroundMusic.play();
   animate(); // Restart the game loop
 }
 
